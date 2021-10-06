@@ -17,13 +17,26 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 // function expression (assign a variable) v function declarartion making function, the keyword, first
-
-var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-    console.log(promptFight);
     window.alert("Welcome to Robot Gladiators!")
 
     var fight = function(enemyName) {
-        
+        //reapeat and execute as long as the enemy-robot is alive
+        while(playerHealth > 0 && enemyHealth > 0){ 
+            var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+    console.log(promptFight);
+    
+    if (promptFight === "skip" || promptFight === "SKIP") {
+        //confirm player wants to skip 
+        var confirmSkip = window.confirm(" Are you sure you'd like to quit? ");
+
+        // if yes (true), leave fight
+    if (confirmSkip) {
+        window.alert(playerName + " has decided to skip this fight. Goodbye! ");
+        playerMoney = playerMoney - 10;
+        console.log("playerMoney", playerMoney);
+        break;
+        }
+    }
     
 // if a plauyer chooses to fight, then fight
 if (promptFight === "fight" || promptFight === "FIGHT") {
@@ -34,6 +47,8 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
         );
         if (enemyHealth <= 0){
             window.alert(enemyName + " has died! ");
+            playerMoney = playerMoney + 20;
+            break;
         } else {
             window.alert(enemyName + " still has " + enemyHealth + " healthleft.");
         }
@@ -46,28 +61,16 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 
         if (playerHealth <= 0) {
             window.alert(playerName + " has died! ");
+            break;
         } else {
             window.alert(playerName + " still has " + playerHealth + " health left.");
         }
-    //if player choses to skip 
-} else if (promptFight === "skip" || promptFight === "SKIP") {
-    //confirm player wants to skip 
-    var confirmSkip = window.confirm(" Are you sure you'd like to quit? ");
-    
-    // if yes (true), leave fight
-    if (confirmSkip) {
-        window.alert(playerName + " has decided to skip this fight. Goodbye! ");
-        playerMoney = playerMoney - 2;
     }
-    else {
-        fight ();
-    }
-    window.alert(playerName + " has chosen to skip the fight! ");
-} else { 
-    window.alert(" You need to choose a valid option. Try again! ");
-}
-    }
+ }
+    };
 for(var i = 0; i < enemyNames.length; i++) {
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth=50;
         fight(enemyNames[i]);
     }
 
