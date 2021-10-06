@@ -16,15 +16,15 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-// function expression (assign a variable) v function declarartion making function, the keyword, first 
-var fight = function(enemyName) {
-    window.alert("Welcome to Robot Gladiators!");
-    
-}
+// function expression (assign a variable) v function declarartion making function, the keyword, first
+
 var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
     console.log(promptFight);
+    window.alert("Welcome to Robot Gladiators!")
 
-
+    var fight = function(enemyName) {
+        
+    
 // if a plauyer chooses to fight, then fight
 if (promptFight === "fight" || promptFight === "FIGHT") {
     //remove enemy's health
@@ -66,7 +66,8 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 } else { 
     window.alert(" You need to choose a valid option. Try again! ");
 }
-
+    }
 for(var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
-}
+        fight(enemyNames[i]);
+    }
+
